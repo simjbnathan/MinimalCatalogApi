@@ -1,27 +1,102 @@
-# MinimalCatalogApiUI
+# Item Catalogue SPA
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
+This project is a simple yet feature-rich Single Page Application (SPA) that displays an item catalogue. The frontend is developed using Angular, while the backend is implemented with .NET Core. This README.md provides instructions on how to set up, build, and run the application, as well as details on API usage.
 
-## Development server
+## Setup
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Prerequisites
 
-## Code scaffolding
+Make sure you have the following installed on your machine:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node.js and npm (https://nodejs.org/)
+- Angular CLI (https://cli.angular.io/)
+- .NET Core SDK (https://dotnet.microsoft.com/download)
 
-## Build
+### Clone the Repository
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Clone this repository to your local machine:
 
-## Running unit tests
+```bash
+git clone https://github.com/simjbnathan/MinimalCatalogApi.git
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Backend Setup
 
-## Running end-to-end tests
+1. Navigate to the `MinimalCatalogApi` directory:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+cd MinimalCatalogApi
+```
 
-## Further help
+2. Restore the NuGet packages:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+dotnet restore
+```
+
+3. Run the backend server:
+
+```bash
+dotnet run
+```
+
+The backend server should now be running on `https://localhost:7278`.
+
+### Frontend Setup
+
+1. Navigate to the `MinimalCatalogApi.UI` directory:
+
+```bash
+cd MinimalCatalogApi.UI
+```
+
+2. Install the dependencies:
+
+```bash
+npm install
+```
+
+3. Start the Angular development server:
+
+```bash
+ng serve
+```
+
+The frontend server should now be running on `https://localhost:4200`.
+
+## Running the Application
+The application can be run both project.
+
+Click Start to run both projects and will automatically add dependencies.
+
+
+## API Usage
+
+The backend API provides the following endpoints:
+
+- GET /api/items: Retrieves all items.
+- GET /api/items/{id}: Retrieves an item by ID.
+- POST /api/items: Creates a new item.
+- PUT/PATCH /api/items/{id}: Updates an item by ID.
+- DELETE /api/items/{id}: Deletes an item by ID.
+
+### Authentication
+
+If API key authentication is implemented, dont need to configure any API key. It will automatically authenticate.
+API key is implemented both in UI and API.
+
+## Docker Setup (Optional)
+
+Docker not implemented in this project. My machine is not supporting Docker.
+
+## Evaluation
+
+The solution will be evaluated based on the following criteria:
+
+- Functionality: Does the SPA fulfill the core requirements and optional enhancements? Yes
+- Code Quality: Is the code clean, well-structured, and maintainable? Yes
+- Security: Is API key authentication correctly implemented (if attempted)? Yes
+- User Experience: Is the SPA intuitive and easy to navigate? Yes
+- Documentation: Are the setup, build, and usage instructions clear and helpful? yes
+- Containerization: If Docker setup is provided, does it work smoothly for setup and execution? No
+
