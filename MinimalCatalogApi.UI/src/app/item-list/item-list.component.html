@@ -1,1 +1,131 @@
-<p>item-list works!</p>
+<div class="container">
+  <h1>Items</h1>
+
+  <!-- Search form -->
+  <form>
+    <div class="mb-3 row">
+      <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
+      <div class="col-xs-3 col-sm-auto">
+        <input id="table-complete-search" type="text" class="form-control" name="searchTerm" [(ngModel)]="searchTerm"
+          (ngModelChange)="onSearchTermChange()" />
+      </div>
+      <div *ngIf="loading$ | async" class="col col-form-label">Loading...</div>
+    </div>
+  </form>
+
+
+
+
+  <!-- Table to display items -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Category</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of filteredItems">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.category }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="openEditModal(content, item)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteItem(item.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+
+    <!-- Button for adding a new item -->
+    <button class="btn btn-primary" (click)="openAddModal(addModal)">Add New Item</button>
+  </div>
+
+
+  <!-- Edit modal -->
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Edit Item</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!-- Form for editing item -->
+      <form>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" [ngModel]="modalItem.name"
+            (ngModelChange)="modalItem.name = $event" name="name">
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input type="text" class="form-control" id="description" [ngModel]="modalItem.description"
+            (ngModelChange)="modalItem.description = $event" name="description">
+        </div>
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <input type="text" class="form-control" id="category" [ngModel]="modalItem.category"
+            (ngModelChange)="modalItem.category = $event" name="category">
+        </div>
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel')">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="saveItem()">Save changes</button>
+    </div>
+  </ng-template>
+
+  <!-- Add modal -->
+  <ng-template #addModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Add New Item</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!-- Form for adding a new item -->
+      <form>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" [ngModel]="modalItem.name"
+            (ngModelChange)="modalItem.name = $event" name="name">
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input type="text" class="form-control" id="description" [ngModel]="modalItem.description"
+            (ngModelChange)="modalItem.description = $event" name="description">
+        </div>
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <input type="text" class="form-control" id="category" [ngModel]="modalItem.category"
+            (ngModelChange)="modalItem.category = $event" name="category">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel')">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="saveItem()">Save</button>
+    </div>
+  </ng-template>
+
+  <ng-template #standardTpl> I'm a standard toast </ng-template>
+
+  <ng-template #successTpl> I'm a success toast </ng-template>
+
+  <ng-template #dangerTpl>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="24" height="24" viewBox="0 0 24 24">
+      <path
+        d="M10.872 6.831l1.695 3.904 3.654-1.561-1.79 3.426 3.333.954-3.417 1.338 2.231 4.196-4.773-2.582-2.869 2.287.413-3.004-3.792-.726 2.93-1.74-1.885-2.512 3.427.646.843-4.626zm-.786-6.831l-1.665 9.119-6.512-1.228 3.639 4.851-5.548 3.294 7.108 1.361-.834 6.076 5.742-4.577 9.438 5.104-4.288-8.064 6.834-2.677-6.661-1.907 3.25-6.22-6.98 2.982-3.523-8.114z" />
+    </svg>
+    Danger Danger !
+  </ng-template>
