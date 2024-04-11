@@ -92,8 +92,6 @@ Docker not implemented in this project. My machine is not supporting Docker.
 
 ## Evaluation
 
-The solution will be evaluated based on the following criteria:
-
 - Functionality: Does the SPA fulfill the core requirements and optional enhancements? Yes
 - Code Quality: Is the code clean, well-structured, and maintainable? Yes
 - Security: Is API key authentication correctly implemented (if attempted)? Yes
