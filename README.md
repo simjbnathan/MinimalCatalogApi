@@ -1,6 +1,7 @@
 # Item Catalogue SPA
 
 This project is a simple yet feature-rich Single Page Application (SPA) that displays an item catalogue. The frontend is developed using Angular, while the backend is implemented with .NET Core. This README.md provides instructions on how to set up, build, and run the application, as well as details on API usage.
+![image](https://github.com/simjbnathan/MinimalCatalogApi/assets/55340453/63bc4756-0c61-4ece-8b38-fc328ee26b1f)
 
 ## Setup
 
